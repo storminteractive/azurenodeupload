@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', function(req, res) {
     //res.json({ message: 'WELCOME' });   
     res.sendFile(__dirname + '/index.html');
-    console.log("Sending / to "+req.ip+"("+req.hostname+")");
+    console.log("Hello2! Sending / to "+req.ip+"("+req.hostname+")");
 });
 
 app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
@@ -42,4 +42,4 @@ app.use('/uploads', serveIndex(__dirname + '/uploads'));
 app.use('/uploads', express.static(__dirname+"/uploads"));
 
  
-app.listen(3000, () => console.log('Server started on port 3000'));
+app.listen(process.env.PORT, () => console.log('Server started on port 3000'));
